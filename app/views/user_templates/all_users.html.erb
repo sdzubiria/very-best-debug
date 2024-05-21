@@ -1,6 +1,6 @@
 <h1>List of users</h1>
 
-<form action="/insert_user_record" method="">
+<form action="/insert_user_record" method="post">
   <label for="browser_username">Username</label>
   <input id="browser_username" type="text" name="query_username" placeholder="Enter a username...">
 
@@ -11,31 +11,16 @@
 
 <table border="1">
   <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      Username
-    </th>
-
+    <th>ID</th>
+    <th>Username</th>
     <th></th>
   </tr>
 
   <% @users.each do |user| %>
   <tr>
-    <td>
-      <%= user.id %>
-    </td>
-
-    <td>
-      <%= user.username %>
-    </td>
-
-    <td>
-      <a href="/users/<%= user.username %>">Show details</a>
-    </td>
+    <td><%= user.id %></td>
+    <td><%= user.username %></td>
+    <td><a href="/users/<%= user.username %>">Show details</a></td>
   </tr>
-  
   <% end %>
 </table>

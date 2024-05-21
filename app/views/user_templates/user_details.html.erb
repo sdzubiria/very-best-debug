@@ -9,54 +9,29 @@
     <form action="/update_user/<%= @user.id %>" method="post">
       <label for="browser_username">Username</label>
       <input id="browser_username" type="text" name="query_username" placeholder="Enter a username..." value="<%= @user.username %>">
-
       <button>Update user</button>
     </form>
   </dd>
 </dl>
 
+<h2>Own photos (<%= @user.commented_venues.count %>)</h2>
+
 <table border="1">
   <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      Address
-    </th>
-
-    <th>
-      Name
-    </th>
-
-    <th>
-      Neighborhood
-    </th>
-
+    <th>ID</th>
+    <th>Address</th>
+    <th>Name</th>
+    <th>Neighborhood</th>
     <th></th>
   </tr>
 
   <% @user.commented_venues.each do |venue| %>
   <tr>
-    <td>
-      <%= venue.id %>
-    </td>
-    <td>
-      <%= venue.address %>
-    </td>
-   
-    <td>
-      <%= venue.name %>
-    </td>
-   
-    <td>
-      <%= venue.neighborhood %>
-    </td>
-
-    <td>
-      <a href="/venues/<%= venue.id %>">Show details</a>
-    </td>
+    <td><%= venue.id %></td>
+    <td><%= venue.address %></td>
+    <td><%= venue.name %></td>
+    <td><%= venue.neighborhood %></td>
+    <td><a href="/venues/<%= venue.id %>">Show details</a></td>
   </tr>
-  
   <% end %>
 </table>
