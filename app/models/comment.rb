@@ -14,12 +14,10 @@ class Comment < ApplicationRecord
   validates(:commenter, { :presence => true })
 
   def commenter
-    my_id = self.id
-    
-    matching_users = User.where({ :id => my_id })
-
+    my_author_id = self.author_id
+    matching_users = User.where({ id: my_author_id })
     the_user = matching_users.at(0)
-    
-    return the_user
+    return the_user unless the_user.nil?
+    User.new(username: "Unknown") # Return a dummy user if none found
   end
 end
